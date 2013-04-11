@@ -3,5 +3,16 @@
 
     <string name="app_name">PlakTour</string>
     <string name="action_settings">Settings</string>
+    
+    <string name="detail_points">Aantal Punten</string>
+    <string name="detail_posters">Aantal Affiches</string>
+    <string name="detail_time">Tijd</string>
+    <string name="detail_lastActivity">Laatste Activiteit</string>
+    <string name="detail_pointsDone">Aantal punten gedaan</string>
+    
+    <!-- Accessible strings -->
+    <string name="start_button">Start Tour</string>
+    <string name="comments_button">View Comments</string>
+    <string name="newTour_button">Create New Tour</string>
 
 </resources>

@@ -1,0 +1,269 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".TourDetailActivity" 
+    android:background="@drawable/gradient_background" >
+
+    <!-- gradient background -->
+    <LinearLayout
+        android:id="@+id/tourDetailBackground"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" 
+        android:background="@drawable/gradient_tours"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="48dp">
+
+        <!-- white background -->
+        <LinearLayout
+            android:id="@+id/tourDetailLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" 
+            android:background="#ffffff"
+            android:layout_marginLeft="8dp"
+        	android:layout_marginTop="8dp"
+        	android:layout_marginRight="8dp"
+        	android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/detail_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vilvoorde"
+                android:layout_margin="12dp"
+                android:textStyle="bold"
+                android:textColor="@color/tourDetailTitle"
+                android:minHeight="12dip"
+	            android:textSize="32sp"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+            
+            <!-- aantal punten layout -->
+            <LinearLayout
+                android:id="@+id/detail_pointsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" 
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp">
+                
+                <TextView 
+	                android:id="@+id/detail_pointsLabel"
+	                android:layout_weight="2"
+	                android:layout_width="0dip"
+	                android:layout_height="wrap_content"
+	                android:textAlignment="viewEnd"
+	                android:gravity="right"
+	                android:minHeight="12dip"
+	                android:textSize="24sp"
+	                android:textStyle="bold"
+	                android:textColor="@color/tourDetailLabel"
+	                android:text="@string/detail_points" />
+                
+                <TextView 
+                    android:id="@+id/detail_pointsValue"
+                    android:layout_weight="1"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:minHeight="12dip"
+	                android:textSize="24sp"
+	                android:textColor="@color/tourDetailValue"
+	                android:gravity="center_vertical|center_horizontal"
+                    android:text="5"/>
+                
+            </LinearLayout>
+            
+            <!-- aantal affiches layout -->
+            <LinearLayout
+                android:id="@+id/detail_postersLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" 
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp">
+                
+                <TextView 
+	                android:id="@+id/detail_postersLabel"
+	                android:layout_weight="2"
+	                android:layout_width="0dip"
+	                android:layout_height="wrap_content"
+	                android:textAlignment="viewEnd"
+	                android:gravity="right"
+	                android:minHeight="12dip"
+	                android:textSize="24sp"
+	                android:textStyle="bold"
+	                android:textColor="@color/tourDetailLabel"
+	                android:text="@string/detail_posters" />
+                
+                <TextView 
+                    android:id="@+id/detail_postersValue"
+                    android:layout_weight="1"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:minHeight="12dip"
+	                android:textSize="24sp"
+	                android:textColor="@color/tourDetailValue"
+	                android:gravity="center_vertical|center_horizontal"
+                    android:text="5"/>
+                
+            </LinearLayout>
+            
+            <!-- tijd layout -->
+            <LinearLayout
+                android:id="@+id/detail_timeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" 
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="18dp"
+                android:layout_marginLeft="8dp">
+                
+                <TextView 
+	                android:id="@+id/detail_timeLabel"
+	                android:layout_weight="2"
+	                android:layout_width="0dip"
+	                android:layout_height="wrap_content"
+	                android:textAlignment="viewEnd"
+	                android:gravity="right"
+	                android:minHeight="12dip"
+	                android:textSize="24sp"
+	                android:textStyle="bold"
+	                android:textColor="@color/tourDetailLabel"
+	                android:text="@string/detail_time" />
+                
+                <TextView 
+                    android:id="@+id/detail_timeValue"
+                    android:layout_weight="1"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:minHeight="12dip"
+	                android:textSize="24sp"
+	                android:textColor="@color/tourDetailValue"
+	                android:gravity="center_vertical|center_horizontal"
+                    android:text="5"/>
+                
+            </LinearLayout>
+            
+            <!-- laatste activiteit layout -->
+            <LinearLayout
+                android:id="@+id/detail_lastActivityLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" 
+                android:layout_marginTop="18dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp">
+                
+                <TextView 
+	                android:id="@+id/detail_lastActivityLabel"
+	                android:layout_weight="2"
+	                android:layout_width="0dip"
+	                android:layout_height="wrap_content"
+	                android:textAlignment="viewEnd"
+	                android:gravity="right"
+	                android:minHeight="12dip"
+	                android:textSize="24sp"
+	                android:textStyle="bold"
+	                android:textColor="@color/tourDetailLabel"
+	                android:text="@string/detail_lastActivity" />
+                
+                <TextView 
+                    android:id="@+id/detail_lastActivityValue"
+                    android:layout_weight="1"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:minHeight="12dip"
+	                android:textSize="24sp"
+	                android:textColor="@color/tourDetailValue"
+	                android:gravity="center_vertical|center_horizontal"
+                    android:text="5"/>
+                
+            </LinearLayout>
+            
+            <!-- aantal punten gedaan layout -->
+            <LinearLayout
+                android:id="@+id/detail_pointsDoneLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" 
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="18dp"
+                android:layout_marginLeft="8dp">
+                
+                <TextView 
+	                android:id="@+id/detail_pointsDoneLabel"
+	                android:layout_weight="2"
+	                android:layout_width="0dip"
+	                android:layout_height="wrap_content"
+	                android:textAlignment="viewEnd"
+	                android:gravity="right"
+	                android:minHeight="12dip"
+	                android:textSize="24sp"
+	                android:textStyle="bold"
+	                android:textColor="@color/tourDetailLabel"
+	                android:text="@string/detail_pointsDone" />
+                
+                <TextView 
+                    android:id="@+id/detail_pointsDoneValue"
+                    android:layout_weight="1"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:minHeight="12dip"
+	                android:textSize="24sp"
+	                android:textColor="@color/tourDetailValue"
+	                android:gravity="center_vertical|center_horizontal"
+                    android:text="5"/>
+                
+            </LinearLayout>
+            
+        </LinearLayout>
+        
+    </LinearLayout>
+
+    <!-- bottom action bar -->
+    <LinearLayout 
+        android:layout_height="36dip"
+        android:layout_width="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="6dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:id="@+id/bottomActionBar">
+        
+        <ImageButton
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:contentDescription="@string/comments_button"
+            android:src="@drawable/comments_icon" />
+        
+        <ImageButton
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:contentDescription="@string/start_button"
+            android:src="@drawable/start_icon" 
+            android:background="@null" />
+		
+        <ImageButton
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:contentDescription="@string/newTour_button"
+            android:src="@drawable/newtour_icon" 
+            android:background="@null" />
+        
+    </LinearLayout>
+</RelativeLayout>

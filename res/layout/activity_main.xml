@@ -6,26 +6,56 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity" 
+    android:background="@drawable/gradient_background" >
 
     <ListView
         android:id="@+id/listViewTours"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="fill_parent" 
+        android:background="@drawable/gradient_tours"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginBottom="48dp">
 		
     </ListView>
 
     <LinearLayout 
-        android:layout_height="30dip"
+        android:layout_height="36dip"
         android:layout_width="fill_parent"
         android:layout_alignParentBottom="true"
-        android:id="@+id/bottomActionBar"
-        android:background="#FF0000">
+        android:layout_marginBottom="6dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:id="@+id/bottomActionBar">
         
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:text="bottomBar" />
-
+        <ImageButton
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:contentDescription="@string/comments_button"
+            android:src="@drawable/comments_icon" />
+        
+        <ImageButton
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:contentDescription="@string/start_button"
+            android:src="@drawable/start_icon" 
+            android:background="@null" />
+		
+        <ImageButton
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:contentDescription="@string/newTour_button"
+            android:src="@drawable/newtour_icon" 
+            android:background="@null" />
+        
     </LinearLayout>
 </RelativeLayout>

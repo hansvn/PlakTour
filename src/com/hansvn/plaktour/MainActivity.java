@@ -1,24 +1,39 @@
 package com.hansvn.plaktour;
 
-import java.util.ArrayList;
-
-import android.os.Build;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
-
-	public final static String EXTRA_MESSAGE = "com.hansvn.plaktour.MESSAGE";
+	
+	TourListAdapter tourListAdapter;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		initToursList();
+		ListView toursListView = (ListView) findViewById(R.id.listViewTours);
+		tourListAdapter = new TourListAdapter();
+		toursListView.setAdapter(tourListAdapter);
+		
+		toursListView.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> adapter, View view, int position, long arg){
+				//testmessage:
+				Toast.makeText(getApplicationContext(), "You clicked at item "+ position, Toast.LENGTH_LONG).show();
+				
+				//open tourdetail met item dat op positie position staat...
+				//intent enzovoort
+			}
+		});
+		
+		
 	}
 
 	@Override
@@ -26,15 +41,6 @@ public class MainActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
-	}
-	
-	public void initToursList() {
-		ListView toursList = (ListView) findViewById(R.id.listViewTours);
-		ArrayList<View> tours = new ArrayList<View>();
-		tours.add(findViewById(R.id.bottomActionBar));
-		if (Build.VERSION.SDK_INT >= 16) {
-			toursList.addView((View)findViewById(R.id.bottomActionBar));
-		}
 	}
 
 }

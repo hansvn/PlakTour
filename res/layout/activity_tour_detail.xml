@@ -36,7 +36,7 @@
                 android:id="@+id/detail_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Vilvoorde"
+                android:text=""
                 android:layout_margin="12dp"
                 android:textStyle="bold"
                 android:textColor="@color/tourDetailTitle"
@@ -76,7 +76,7 @@
 	                android:textSize="24sp"
 	                android:textColor="@color/tourDetailValue"
 	                android:gravity="center_vertical|center_horizontal"
-                    android:text="5"/>
+                    android:text=""/>
                 
             </LinearLayout>
             
@@ -112,7 +112,7 @@
 	                android:textSize="24sp"
 	                android:textColor="@color/tourDetailValue"
 	                android:gravity="center_vertical|center_horizontal"
-                    android:text="5"/>
+                    android:text=""/>
                 
             </LinearLayout>
             
@@ -148,7 +148,7 @@
 	                android:textSize="24sp"
 	                android:textColor="@color/tourDetailValue"
 	                android:gravity="center_vertical|center_horizontal"
-                    android:text="5"/>
+                    android:text=""/>
                 
             </LinearLayout>
             
@@ -184,7 +184,7 @@
 	                android:textSize="24sp"
 	                android:textColor="@color/tourDetailValue"
 	                android:gravity="center_vertical|center_horizontal"
-                    android:text="5"/>
+                    android:text=""/>
                 
             </LinearLayout>
             
@@ -220,7 +220,7 @@
 	                android:textSize="24sp"
 	                android:textColor="@color/tourDetailValue"
 	                android:gravity="center_vertical|center_horizontal"
-                    android:text="5"/>
+                    android:text=""/>
                 
             </LinearLayout>
             

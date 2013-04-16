@@ -2,7 +2,7 @@ package com.hansvn.plaktour;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Intent;
+//import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -22,16 +22,7 @@ public class TourDetailActivity extends Activity {
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 		}
 		
-		Intent intent = getIntent();
-		String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-		
-		// Create the text view
-	    TextView textView = new TextView(this);
-	    textView.setTextSize(40);
-	    textView.setText(message);
-	 
-	    // Set the text view as the activity layout
-	    setContentView(textView);
+		init();
 
 	}
 
@@ -57,5 +48,25 @@ public class TourDetailActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void init(){
+		TextView detail_title = (TextView) findViewById(R.id.detail_title);
+		detail_title.setText("Vilvoorde");
+		
+		TextView detail_pointsValue = (TextView) findViewById(R.id.detail_pointsValue);
+		detail_pointsValue.setText("5");
+		
+		TextView detail_postersValue = (TextView) findViewById(R.id.detail_postersValue);
+		detail_postersValue.setText("5");
+		
+		TextView detail_timeValue = (TextView) findViewById(R.id.detail_timeValue);
+		detail_timeValue.setText("5min");
+		
+		TextView detail_lastActivityValue = (TextView) findViewById(R.id.detail_lastActivityValue);
+		detail_lastActivityValue.setText("5");
+		
+		TextView detail_pointsDoneValue = (TextView) findViewById(R.id.detail_pointsDoneValue);
+		detail_pointsDoneValue.setText("5");
 	}
 }

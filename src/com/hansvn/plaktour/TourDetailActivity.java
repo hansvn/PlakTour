@@ -2,13 +2,14 @@ package com.hansvn.plaktour;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-//import android.content.Intent;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+//import android.content.Intent;
 
 public class TourDetailActivity extends Activity {
 	
@@ -22,7 +23,15 @@ public class TourDetailActivity extends Activity {
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 		}
 		
-		init();
+		// Get the selected tour from the intent
+	    Intent intent = getIntent();
+	    int tourIndex = Integer.parseInt(intent.getStringExtra(MainActivity.SELECTED_TOUR));
+	    
+	    // Get the tour from the adapter
+	    Tour tour = (Tour) MainActivity.tourListAdapter.getItem(tourIndex);
+	    
+	    // Display the data from the tour on the activity
+	    displayData(tour);
 
 	}
 
@@ -50,23 +59,25 @@ public class TourDetailActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	public void init(){
+	public void displayData(Tour tour){
+		// Access the text view
+		// next set the value
 		TextView detail_title = (TextView) findViewById(R.id.detail_title);
-		detail_title.setText("Vilvoorde");
+		detail_title.setText(tour.getTitle());
 		
 		TextView detail_pointsValue = (TextView) findViewById(R.id.detail_pointsValue);
-		detail_pointsValue.setText("5");
+		detail_pointsValue.setText(tour.getLength());
 		
 		TextView detail_postersValue = (TextView) findViewById(R.id.detail_postersValue);
-		detail_postersValue.setText("5");
+		detail_postersValue.setText(tour.getPosters());
 		
 		TextView detail_timeValue = (TextView) findViewById(R.id.detail_timeValue);
-		detail_timeValue.setText("5min");
+		detail_timeValue.setText(tour.getTime());
 		
 		TextView detail_lastActivityValue = (TextView) findViewById(R.id.detail_lastActivityValue);
-		detail_lastActivityValue.setText("5");
+		detail_lastActivityValue.setText(tour.getLastActivity());
 		
 		TextView detail_pointsDoneValue = (TextView) findViewById(R.id.detail_pointsDoneValue);
-		detail_pointsDoneValue.setText("5");
+		detail_pointsDoneValue.setText(tour.getCompletedPoints());
 	}
 }

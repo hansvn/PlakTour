@@ -1,17 +1,17 @@
 package com.hansvn.plaktour;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Toast;
+import android.widget.ListView;
 
 public class MainActivity extends Activity {
-	
-	TourListAdapter tourListAdapter;
+	public final static String SELECTED_TOUR = "com.hansvn.plaktour.TOUR";
+	public static TourListAdapter tourListAdapter;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +26,14 @@ public class MainActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> adapter, View view, int position, long arg){
 				//testmessage:
-				Toast.makeText(getApplicationContext(), "You clicked at item "+ position, Toast.LENGTH_LONG).show();
+				//Toast.makeText(getApplicationContext(), "You clicked at item "+ position, Toast.LENGTH_LONG).show();
 				
 				//open tourdetail met item dat op positie position staat...
 				//intent enzovoort
+				
+				Intent intent = new Intent(view.getContext(), TourDetailActivity.class);
+				intent.putExtra(SELECTED_TOUR, position+"");
+				startActivity(intent);
 			}
 		});
 		

@@ -22,6 +22,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity
+	        android:name="com.hansvn.plaktour.TourDetailActivity"
+	        android:label="@string/title_activity_tour_detail"
+	        android:parentActivityName="com.hansvn.plaktour.MainActivity" >
+	        <meta-data
+	            android:name="android.support.PARENT_ACTIVITY"
+	            android:value="com.hansvn.plaktour.MainActivity" />
+    	</activity>
+        
     </application>
 
 </manifest>

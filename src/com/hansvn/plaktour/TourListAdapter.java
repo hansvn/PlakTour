@@ -31,8 +31,8 @@ public class TourListAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public Object getItem(int arg0) {
-		return getItem(arg0);
+	public Tour getItem(int arg0) {
+		return tours.get(arg0);
 	}
 
 	@Override
@@ -49,6 +49,7 @@ public class TourListAdapter extends BaseAdapter {
 		
 		Tour tour = tours.get(position);
 		
+		//set title and description on every item
 		TextView titleTextView = (TextView) convertView.findViewById(R.id.title_view);
 		titleTextView.setText(tour.getTitle());
 		

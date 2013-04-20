@@ -20,10 +20,10 @@
         android:layout_marginBottom="48dp"
         android:padding="6dp"
         android:divider="#00000000"
-        android:dividerHeight="6dp">
+        android:dividerHeight="6dp"
+        android:listSelector="@drawable/tour_list_selector">
 		
-    </ListView>
-	
+    </ListView>	
     
     <!-- bottom bar -->
     <LinearLayout 
@@ -42,8 +42,9 @@
             android:layout_gravity="center"
             android:background="@null"
             android:contentDescription="@string/comments_button"
-            android:src="@drawable/comments_icon" />
-        
+            android:src="@drawable/comments_icon"
+            android:id="@+id/comments_button" 
+            android:onClick="viewTourComments"/>        
         <ImageButton
             android:layout_width="0dip"
             android:layout_weight="1"
@@ -51,7 +52,9 @@
             android:layout_gravity="center"
             android:contentDescription="@string/start_button"
             android:src="@drawable/start_icon" 
-            android:background="@null" />
+            android:background="@null" 
+            android:id="@+id/start_button" 
+            android:onClick="startTour"/>
 		
         <ImageButton
             android:layout_width="0dip"
@@ -60,7 +63,9 @@
             android:layout_gravity="center"
             android:contentDescription="@string/newTour_button"
             android:src="@drawable/newtour_icon" 
-            android:background="@null" />
+            android:background="@null"
+            android:id="@+id/new_tour_button"
+            android:onClick="newTour" />
         
     </LinearLayout>
 </RelativeLayout>

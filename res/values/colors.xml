@@ -20,4 +20,6 @@
 	<color name="tourDetailTitle">#131151</color>
 	<color name="tourDetailLabel">#8d8e92</color>
 	<color name="tourDetailValue">#5d5d60</color>
+	
+	<color name="tourListItem_normal">#fefefe</color>
 </resources>

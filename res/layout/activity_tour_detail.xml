@@ -41,7 +41,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/tourDetailTitle"
                 android:minHeight="12dip"
-	            android:textSize="32sp"
+	            android:textSize="24sp"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
             
             <!-- aantal punten layout -->
@@ -62,7 +62,7 @@
 	                android:textAlignment="viewEnd"
 	                android:gravity="right"
 	                android:minHeight="12dip"
-	                android:textSize="24sp"
+	                android:textSize="18sp"
 	                android:textStyle="bold"
 	                android:textColor="@color/tourDetailLabel"
 	                android:text="@string/detail_points" />
@@ -73,7 +73,7 @@
                     android:layout_width="0dip"
                     android:layout_height="match_parent"
                     android:minHeight="12dip"
-	                android:textSize="24sp"
+	                android:textSize="18sp"
 	                android:textColor="@color/tourDetailValue"
 	                android:gravity="center_vertical|center_horizontal"
                     android:text=""/>
@@ -98,7 +98,7 @@
 	                android:textAlignment="viewEnd"
 	                android:gravity="right"
 	                android:minHeight="12dip"
-	                android:textSize="24sp"
+	                android:textSize="18sp"
 	                android:textStyle="bold"
 	                android:textColor="@color/tourDetailLabel"
 	                android:text="@string/detail_posters" />
@@ -109,7 +109,7 @@
                     android:layout_width="0dip"
                     android:layout_height="match_parent"
                     android:minHeight="12dip"
-	                android:textSize="24sp"
+	                android:textSize="18sp"
 	                android:textColor="@color/tourDetailValue"
 	                android:gravity="center_vertical|center_horizontal"
                     android:text=""/>
@@ -134,7 +134,7 @@
 	                android:textAlignment="viewEnd"
 	                android:gravity="right"
 	                android:minHeight="12dip"
-	                android:textSize="24sp"
+	                android:textSize="18sp"
 	                android:textStyle="bold"
 	                android:textColor="@color/tourDetailLabel"
 	                android:text="@string/detail_time" />
@@ -145,7 +145,7 @@
                     android:layout_width="0dip"
                     android:layout_height="match_parent"
                     android:minHeight="12dip"
-	                android:textSize="24sp"
+	                android:textSize="18sp"
 	                android:textColor="@color/tourDetailValue"
 	                android:gravity="center_vertical|center_horizontal"
                     android:text=""/>
@@ -170,7 +170,7 @@
 	                android:textAlignment="viewEnd"
 	                android:gravity="right"
 	                android:minHeight="12dip"
-	                android:textSize="24sp"
+	                android:textSize="18sp"
 	                android:textStyle="bold"
 	                android:textColor="@color/tourDetailLabel"
 	                android:text="@string/detail_lastActivity" />
@@ -181,7 +181,7 @@
                     android:layout_width="0dip"
                     android:layout_height="match_parent"
                     android:minHeight="12dip"
-	                android:textSize="24sp"
+	                android:textSize="18sp"
 	                android:textColor="@color/tourDetailValue"
 	                android:gravity="center_vertical|center_horizontal"
                     android:text=""/>
@@ -206,7 +206,7 @@
 	                android:textAlignment="viewEnd"
 	                android:gravity="right"
 	                android:minHeight="12dip"
-	                android:textSize="24sp"
+	                android:textSize="18sp"
 	                android:textStyle="bold"
 	                android:textColor="@color/tourDetailLabel"
 	                android:text="@string/detail_pointsDone" />
@@ -217,7 +217,7 @@
                     android:layout_width="0dip"
                     android:layout_height="match_parent"
                     android:minHeight="12dip"
-	                android:textSize="24sp"
+	                android:textSize="18sp"
 	                android:textColor="@color/tourDetailValue"
 	                android:gravity="center_vertical|center_horizontal"
                     android:text=""/>

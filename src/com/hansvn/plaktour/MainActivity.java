@@ -72,9 +72,13 @@ public class MainActivity extends Activity {
 	//actie van start tour button onclick staat in xml
 	public void startTour(View view) {
 		//get te tour to pass:
-		Tour tourToOpen = (Tour) tourListAdapter.getItem(selectedTour);
+		//Tour tourToOpen = (Tour) tourListAdapter.getItem(selectedTour);
 		//test message:
-		Toast.makeText(getApplicationContext(), "the selected tour: "+ tourToOpen.getTitle(), Toast.LENGTH_LONG).show();
+		//Toast.makeText(getApplicationContext(), "the selected tour: "+ tourToOpen.getTitle(), Toast.LENGTH_LONG).show();
+
+		Intent intent = new Intent(view.getContext(), TourMapActivity.class);
+		intent.putExtra(SELECTED_TOUR, Integer.toString(selectedTour));
+		startActivity(intent);
 	}
 	
 	//actie van comments button

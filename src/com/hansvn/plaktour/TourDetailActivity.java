@@ -78,6 +78,6 @@ public class TourDetailActivity extends Activity {
 		detail_lastActivityValue.setText(tour.getLastActivity());
 		
 		TextView detail_pointsDoneValue = (TextView) findViewById(R.id.detail_pointsDoneValue);
-		detail_pointsDoneValue.setText(tour.getCompletedPoints());
+		detail_pointsDoneValue.setText(tour.getCompletedpointsNumber());
 	}
 }

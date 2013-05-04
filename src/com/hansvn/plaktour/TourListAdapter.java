@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 
 public class TourListAdapter extends BaseAdapter {
 	
@@ -22,6 +25,32 @@ public class TourListAdapter extends BaseAdapter {
 		"Drie", "I’m rocking it!"));
 		tours.add(new Tour(
 		"Vier", "Pretty good."));
+		
+		ArrayList<Point> points = new ArrayList<Point>();
+		
+		MarkerOptions firstPoint = new MarkerOptions();
+		firstPoint.position(new LatLng(50.990792, 4.409897));
+		firstPoint.title("ergens");
+		Point punt = new Point();
+		punt.markerOptions = firstPoint;
+		points.add(punt);
+		
+		MarkerOptions secondPoint = new MarkerOptions();
+		secondPoint.position(new LatLng(50.990550, 4.410184));
+		secondPoint.title("ergens opnieuw");
+		Point punt2 = new Point();
+		punt2.markerOptions = secondPoint;
+		points.add(punt2);
+		
+		for (int i=0;i<10;i++){
+			MarkerOptions mo = new MarkerOptions();
+			mo.position(new LatLng(50.962338+i, 4.457528+i));
+			mo.title("punt "+i);
+			Point p = new Point();
+			p.markerOptions = mo;
+			points.add(p);
+		}
+		tours.get(3).setPoints(points);
 	}
 	
 	

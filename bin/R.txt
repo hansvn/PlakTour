@@ -84,11 +84,12 @@ int layout activity_tour_map 0x7f030002
 int layout tour_list_item 0x7f030003
 int menu main 0x7f090000
 int string action_settings 0x7f050012
+int string api_url 0x7f050020
 int string app_name 0x7f050011
 int string auth_client_availability_notification_title 0x7f05000e
 int string auth_client_play_services_err_notification_msg 0x7f05000f
 int string auth_client_requested_by_msg 0x7f050010
-int string comments_button 0x7f050021
+int string comments_button 0x7f050022
 int string common_google_play_services_enable_button 0x7f050006
 int string common_google_play_services_enable_text 0x7f050005
 int string common_google_play_services_enable_title 0x7f050004
@@ -113,9 +114,9 @@ int string detail_posters 0x7f050016
 int string detail_time 0x7f050017
 int string enable_gps 0x7f05001d
 int string enable_gps_dialog 0x7f05001e
-int string newTour_button 0x7f050022
+int string newTour_button 0x7f050023
 int string not_support_gps 0x7f05001f
-int string start_button 0x7f050020
+int string start_button 0x7f050021
 int string title_activity_map 0x7f050014
 int string title_activity_tour_detail 0x7f050013
 int style AppBaseTheme 0x7f080000

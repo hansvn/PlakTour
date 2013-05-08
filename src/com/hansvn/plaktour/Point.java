@@ -8,6 +8,7 @@ public class Point {
 	public MarkerOptions markerOptions;
 	private int posters; //the number of posters for this point
 	private boolean isDone; //if this point is being done
+	private int internetID;
 
 	public Point() {
 		// TODO Auto-generated constructor stub
@@ -27,5 +28,13 @@ public class Point {
 
 	public void setDone(boolean isDone) {
 		this.isDone = isDone;
+	}
+	
+	public int getInternetID() {
+		return internetID;
+	}
+
+	public void setInternetID(int internetID) {
+		this.internetID = internetID;
 	}
 }

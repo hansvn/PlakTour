@@ -10,12 +10,19 @@ public class Tour {
 	private String time;
 	private String lastActivity;
 	
+	private int internetID;
+	
+	public Tour() {
+		points = new ArrayList<Point>();
+	}
+	
 	public Tour(String title, String description){
 		this.title = title;
 		this.description = description;
 		
 		this.time = "0:00";
 		this.lastActivity = "niet vandaag";
+		points = new ArrayList<Point>();
 	}
 	
 	public String getTitle() { return title; }
@@ -27,7 +34,8 @@ public class Tour {
 	public void setTime(String time) { this.time = time; }
 	public String getLastActivity() { return lastActivity; }
 	public void setLastActivity(String lastActivity) { this.lastActivity = lastActivity; }
-	
+	public int getInternetID() { return internetID; }
+	public void setInternetID(int internetID) { this.internetID = internetID; }
 	
 	public ArrayList<Point> getPoints() { return points; }
 	public void setPoints(ArrayList<Point> points) { this.points = points; }
@@ -47,4 +55,14 @@ public class Tour {
 		}
 		return number;
 	}
+	
+	public void addPoints(ArrayList<Point> points) {
+		this.points.addAll(points);
+	}
+	
+	public void addPoint(Point point) {
+		this.points.add(point);
+	}
+
+
 }

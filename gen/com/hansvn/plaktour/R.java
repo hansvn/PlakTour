@@ -219,6 +219,9 @@ containing a value of this type.
     }
     public static final class string {
         public static final int action_settings=0x7f050012;
+        /**  Internet strings 
+         */
+        public static final int api_url=0x7f050020;
         public static final int app_name=0x7f050011;
         /**   Title for notification shown when GooglePlayServices is unavailable [CHAR LIMIT=70] 
          */
@@ -229,7 +232,7 @@ containing a value of this type.
         /**   Requested by string saying which app requested the notification. [CHAR LIMIT=42] 
          */
         public static final int auth_client_requested_by_msg=0x7f050010;
-        public static final int comments_button=0x7f050021;
+        public static final int comments_button=0x7f050022;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -297,11 +300,11 @@ containing a value of this type.
          */
         public static final int enable_gps=0x7f05001d;
         public static final int enable_gps_dialog=0x7f05001e;
-        public static final int newTour_button=0x7f050022;
+        public static final int newTour_button=0x7f050023;
         public static final int not_support_gps=0x7f05001f;
         /**  Accessible strings 
          */
-        public static final int start_button=0x7f050020;
+        public static final int start_button=0x7f050021;
         public static final int title_activity_map=0x7f050014;
         public static final int title_activity_tour_detail=0x7f050013;
     }

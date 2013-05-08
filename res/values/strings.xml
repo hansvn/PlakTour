@@ -23,6 +23,9 @@
     <string name="enable_gps_dialog">De GPS is niet ingeschakeld. Wil je deze inschakelen?</string>
     <string name="not_support_gps">GPS provider niet ondersteund</string>
     
+    <!-- Internet strings -->
+    <string name="api_url">http://192.168.0.191/PlakTour_app/json/getTours.php</string>
+    
     <!-- Accessible strings -->
     <string name="start_button">Start Tour</string>
     <string name="comments_button">View Comments</string>

@@ -1,11 +1,28 @@
 package com.hansvn.plaktour;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.ArrayList;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.os.AsyncTask;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 
 public class TourListAdapter extends BaseAdapter {
@@ -13,7 +30,33 @@ public class TourListAdapter extends BaseAdapter {
 	private ArrayList<Tour> tours = new ArrayList<Tour>();
 	
 	//testData, delete this constructor later to remove testdata
-	public TourListAdapter() {
+	public TourListAdapter(String mode) {		
+		/**
+		 * get the data from internet or local storage
+		 * mode is ofwel via internet ofwel via local storage
+		 **/
+		if(mode == "internet"){
+			//do the internet call
+			new RetreiveToursTask().execute("http://192.168.0.191/PlakTour_app/json/getTours.php");
+		}
+		else {
+			//get from local storage
+		}
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		tours.add(new Tour(
 		"Een", "Feeling good!"));
 		tours.add(new Tour(
@@ -22,6 +65,32 @@ public class TourListAdapter extends BaseAdapter {
 		"Drie", "I’m rocking it!"));
 		tours.add(new Tour(
 		"Vier", "Pretty good."));
+		
+		ArrayList<Point> points = new ArrayList<Point>();
+		
+		MarkerOptions firstPoint = new MarkerOptions();
+		firstPoint.position(new LatLng(50.990792, 4.409897));
+		firstPoint.title("ergens");
+		Point punt = new Point();
+		punt.markerOptions = firstPoint;
+		points.add(punt);
+		
+		MarkerOptions secondPoint = new MarkerOptions();
+		secondPoint.position(new LatLng(50.990550, 4.410184));
+		secondPoint.title("ergens opnieuw");
+		Point punt2 = new Point();
+		punt2.markerOptions = secondPoint;
+		points.add(punt2);
+		
+		for (int i=0;i<10;i++){
+			MarkerOptions mo = new MarkerOptions();
+			mo.position(new LatLng(50.962338+i, 4.457528+i));
+			mo.title("punt "+i);
+			Point p = new Point();
+			p.markerOptions = mo;
+			points.add(p);
+		}
+		tours.get(3).setPoints(points);
 	}
 	
 	
@@ -58,5 +127,184 @@ public class TourListAdapter extends BaseAdapter {
 		
 		return convertView;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
+	
+	
+	
+	
+	
+	
+	
+	class RetreiveToursTask extends AsyncTask<String, Void, ArrayList<Tour>> {
+		private Exception exception;
+		
+		@Override
+		protected ArrayList<Tour> doInBackground(String... urls) {
+		    try {
+		        URL url= new URL(urls[0]);
+		        //return arraylist
+		        ArrayList<Tour> toReturn = getFromInternet(url);
+		        return toReturn;
+		    } catch (Exception e) {
+		        this.exception = e;
+		        Log.e("AsyncTask", exception.toString());
+		        return null;
+		    }
+		}
+		
+		@Override
+		protected void onPostExecute(ArrayList<Tour> toursArray) {
+		    //add the tours from internet to the array
+			if(toursArray != null) {
+				tours.addAll(toursArray);
+			}
+			else {
+				Log.e("Http_tours","No tours were added from internet");
+			}
+			
+			TourListAdapter.this.notifyDataSetChanged();
+		}
+	}
+	
+	//this must return a JSONArray that is filtered on the tours...
+	private static ArrayList<Tour> getFromInternet(URL api_url) {
+		JSONObject json = getJSONfromURL(api_url);
+		ArrayList<Tour> toursFromInternet = new ArrayList<Tour>();		
+		
+		try{
+			//Get the element that holds the tours ( JSONArray )
+			int statusCode = Integer.parseInt(json.getString("statusCode"));
+			if(statusCode != 1){
+				//the query didn't execute...
+			}
+			else
+			{
+				Tour t = new Tour();
+				int tourId = 0;
+				int jsonLength = json.length();
+				if(jsonLength <= 1){
+					throw new JSONException("json answer too short...");
+				}
+				//iterate over the points
+				for(int i=0; i<jsonLength-2; i++) {
+					JSONObject punt = json.getJSONObject(Integer.toString(i));
+					int currentTourId = Integer.parseInt(punt.getString("tour_id"));
+					
+					//initialiseer de eerste tour
+					if(tourId == 0){
+						tourId = currentTourId;
+								
+						t.setTitle(punt.getString("tour_naam"));
+						t.setDescription(punt.getString("tour_beschrijving"));
+						t.setLastActivity(punt.getString("tour_laatsteActiviteit"));
+						t.setTime(punt.getString("tour_tijd"));
+					}
+					
+					if(currentTourId == tourId) {
+						//punt behoort tot dezelfde tour
+						Point p = new Point();
+						p.setInternetID(Integer.parseInt(punt.getString("punt_id")));
+						p.setPosters(Integer.parseInt(punt.getString("punt_posters")));
+						MarkerOptions mo = new MarkerOptions();
+						mo.title(punt.getString("punt_naam"));
+						//mo.icon() nog zetten met punt.getString("punt_type_icoon");
+						mo.position(new LatLng(Double.parseDouble(punt.getString("punt_latitude")), Double.parseDouble(punt.getString("punt_longitude"))));
+						p.markerOptions = mo;
+						
+						t.addPoint(p);
+					}
+					else {
+						//punt behoort tot een nieuwe tour: zet huidige tour weg in de lijst en maak een nieuwe tour aan.
+						toursFromInternet.add(t);
+						
+						t = new Tour();
+						t.setTitle(punt.getString("tour_naam"));
+						t.setDescription(punt.getString("tour_beschrijving"));
+						t.setLastActivity(punt.getString("tour_laatsteActiviteit"));
+						t.setTime(punt.getString("tour_tijd"));
+						
+						//create the point
+						Point p = new Point();
+						p.setInternetID(Integer.parseInt(punt.getString("punt_id")));
+						p.setPosters(Integer.parseInt(punt.getString("punt_posters")));
+						MarkerOptions mo = new MarkerOptions();
+						mo.title(punt.getString("punt_naam"));
+						//mo.icon() nog zetten met punt.getString("punt_type_icoon");
+						mo.position(new LatLng(Double.parseDouble(punt.getString("punt_latitude")), Double.parseDouble(punt.getString("punt_longitude"))));
+						p.markerOptions = mo;
+						
+						t.addPoint(p);
+						
+						tourId = currentTourId;
+					}
+				} //end for loop
+				
+				toursFromInternet.add(t);
+			}
+			
+		}
+		catch(JSONException e) {
+			Log.e("log_tag", "Error parsing data "+e.toString());
+		}
+		
+		return toursFromInternet;
+	}
+	
+	/**
+	 * fetch the data from the internet or local storage
+	 */
+	
+	public static JSONObject getJSONfromURL(URL url){
+		//initialize
+		InputStream is = null;
+		String result = "";
+		JSONObject jArray = null;
+
+		//http post
+		try{
+			HttpClient httpclient = new DefaultHttpClient();
+			HttpPost httppost = new HttpPost(url.toString());
+			HttpResponse response = httpclient.execute(httppost);
+			HttpEntity entity = response.getEntity();
+			is = entity.getContent();
+
+		}catch(Exception e){
+			Log.e("log_tag", "Error in http connection "+e.toString());
+		}
+
+		//convert response to string
+		try{
+			BufferedReader reader = new BufferedReader(new InputStreamReader(is,"iso-8859-1"),8);
+			StringBuilder sb = new StringBuilder();
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				sb.append(line + "\n");
+			}
+			is.close();
+			result=sb.toString();
+		}catch(Exception e){
+			Log.e("log_tag", "Error converting result "+e.toString());
+		}
+
+		//try parse the string to a JSON object
+		try{
+	        	jArray = new JSONObject(result);
+		}catch(JSONException e){
+			Log.e("log_tag", "Error parsing data "+e.toString());
+		}
+
+		return jArray;
+	}
+	
 }

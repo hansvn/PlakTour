@@ -13,6 +13,19 @@
     <string name="detail_lastActivity">Laatste Activiteit</string>
     <string name="detail_pointsDone">Aantal punten gedaan</string>
     
+    <!-- dialog to ask the user if the point is done -->
+    <string name="confirm_point_done">Punt Gedaan</string>
+    <string name="confirm_point_done_dialog">Is dit punt gedaan?</string>
+    <string name="confirm_point_done_action">Gedaan en verder</string>
+    
+    <!-- dialog to prompt the user to enable the gps -->
+    <string name="enable_gps">GPS aanzetten</string>
+    <string name="enable_gps_dialog">De GPS is niet ingeschakeld. Wil je deze inschakelen?</string>
+    <string name="not_support_gps">GPS provider niet ondersteund</string>
+    
+    <!-- Internet strings -->
+    <string name="api_url">http://192.168.0.191/PlakTour_app/json/getTours.php</string>
+    
     <!-- Accessible strings -->
     <string name="start_button">Start Tour</string>
     <string name="comments_button">View Comments</string>

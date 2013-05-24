@@ -1,7 +1,10 @@
 package com.hansvn.plaktour;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -21,10 +24,26 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		//test om te kijken of internet werkt
+		String internet;
+		ConnectivityManager connMgr = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+		if (networkInfo != null && networkInfo.isConnected()) {
+	        // fetch data
+			internet = "internet";
+			Toast.makeText(getApplicationContext(), "internet ok", Toast.LENGTH_LONG).show();
+	    } else {
+	        // fetch data from local store
+	    	internet = "local";
+	    	Toast.makeText(getApplicationContext(), "internet not ok", Toast.LENGTH_LONG).show();
+	    }
+		//einde internet test
+		
 		//set data on listview
 		final ListView toursListView = (ListView) findViewById(R.id.listViewTours);
-		tourListAdapter = new TourListAdapter();
+		tourListAdapter = new TourListAdapter(internet);
 		toursListView.setAdapter(tourListAdapter);
+		tourListAdapter.notifyDataSetChanged();
 				
 		//final swipedetector to access it from the onItemClick function
 		final SwipeDetector swipeDetector = new SwipeDetector();
@@ -67,6 +86,12 @@ public class MainActivity extends Activity {
 	            return true;
 	        }
 	    });
+	}
+	
+	@Override
+	protected void onStart() {
+        super.onStart();
+
 	}
 	
 	//actie van start tour button onclick staat in xml

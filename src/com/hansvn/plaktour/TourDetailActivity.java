@@ -66,10 +66,10 @@ public class TourDetailActivity extends Activity {
 		detail_title.setText(tour.getTitle());
 		
 		TextView detail_pointsValue = (TextView) findViewById(R.id.detail_pointsValue);
-		detail_pointsValue.setText(tour.getLength());
+		detail_pointsValue.setText(Integer.toString(tour.getLength()));
 		
 		TextView detail_postersValue = (TextView) findViewById(R.id.detail_postersValue);
-		detail_postersValue.setText(tour.getPosters());
+		detail_postersValue.setText(Integer.toString(tour.getPosters()));
 		
 		TextView detail_timeValue = (TextView) findViewById(R.id.detail_timeValue);
 		detail_timeValue.setText(tour.getTime());
@@ -78,6 +78,6 @@ public class TourDetailActivity extends Activity {
 		detail_lastActivityValue.setText(tour.getLastActivity());
 		
 		TextView detail_pointsDoneValue = (TextView) findViewById(R.id.detail_pointsDoneValue);
-		detail_pointsDoneValue.setText(tour.getCompletedPoints());
+		detail_pointsDoneValue.setText(Integer.toString(tour.getCompletedpointsNumber()));
 	}
 }

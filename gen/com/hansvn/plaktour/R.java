@@ -161,16 +161,17 @@ containing a value of this type.
         public static final int activity_vertical_margin=0x7f070001;
     }
     public static final class drawable {
-        public static final int comments_icon=0x7f020000;
-        public static final int gradient_background=0x7f020001;
-        public static final int gradient_tours=0x7f020002;
-        public static final int ic_launcher=0x7f020003;
-        public static final int newtour_icon=0x7f020004;
-        public static final int start_icon=0x7f020005;
-        public static final int tour_list_selector=0x7f020006;
-        public static final int tour_list_selector_focussed=0x7f020007;
-        public static final int tour_list_selector_normal=0x7f020008;
-        public static final int tour_list_selector_pressed=0x7f020009;
+        public static final int check_icon=0x7f020000;
+        public static final int comments_icon=0x7f020001;
+        public static final int gradient_background=0x7f020002;
+        public static final int gradient_tours=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
+        public static final int newtour_icon=0x7f020005;
+        public static final int start_icon=0x7f020006;
+        public static final int tour_list_selector=0x7f020007;
+        public static final int tour_list_selector_focussed=0x7f020008;
+        public static final int tour_list_selector_normal=0x7f020009;
+        public static final int tour_list_selector_pressed=0x7f02000a;
     }
     public static final class id {
         public static final int action_settings=0x7f040020;
@@ -218,6 +219,9 @@ containing a value of this type.
     }
     public static final class string {
         public static final int action_settings=0x7f050012;
+        /**  Internet strings 
+         */
+        public static final int api_url=0x7f050020;
         public static final int app_name=0x7f050011;
         /**   Title for notification shown when GooglePlayServices is unavailable [CHAR LIMIT=70] 
          */
@@ -228,7 +232,7 @@ containing a value of this type.
         /**   Requested by string saying which app requested the notification. [CHAR LIMIT=42] 
          */
         public static final int auth_client_requested_by_msg=0x7f050010;
-        public static final int comments_button=0x7f05001b;
+        public static final int comments_button=0x7f050022;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -282,15 +286,25 @@ containing a value of this type.
         find the service-side assets. [CHAR LIMIT=25] 
          */
         public static final int common_signin_button_text_long=0x7f05000d;
+        /**  dialog to ask the user if the point is done 
+         */
+        public static final int confirm_point_done=0x7f05001a;
+        public static final int confirm_point_done_action=0x7f05001c;
+        public static final int confirm_point_done_dialog=0x7f05001b;
         public static final int detail_lastActivity=0x7f050018;
         public static final int detail_points=0x7f050015;
         public static final int detail_pointsDone=0x7f050019;
         public static final int detail_posters=0x7f050016;
         public static final int detail_time=0x7f050017;
-        public static final int newTour_button=0x7f05001c;
+        /**  dialog to prompt the user to enable the gps 
+         */
+        public static final int enable_gps=0x7f05001d;
+        public static final int enable_gps_dialog=0x7f05001e;
+        public static final int newTour_button=0x7f050023;
+        public static final int not_support_gps=0x7f05001f;
         /**  Accessible strings 
          */
-        public static final int start_button=0x7f05001a;
+        public static final int start_button=0x7f050021;
         public static final int title_activity_map=0x7f050014;
         public static final int title_activity_tour_detail=0x7f050013;
     }

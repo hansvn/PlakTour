@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">PlakTour</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Instellingen</string>
     
     <string name="title_activity_tour_detail">Tour Detail</string>
     <string name="title_activity_map">Map</string>
@@ -12,6 +12,8 @@
     <string name="detail_time">Tijd</string>
     <string name="detail_lastActivity">Laatste Activiteit</string>
     <string name="detail_pointsDone">Aantal punten gedaan</string>
+    
+    <string name="header_profile">profiel</string>
     
     <!-- dialog to ask the user if the point is done -->
     <string name="confirm_point_done">Punt Gedaan</string>

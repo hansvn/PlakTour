@@ -31,10 +31,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 @SuppressLint("ValidFragment")
 public class TourMapActivity extends FragmentActivity {
 	private final String TAG = getClass().getSimpleName();
-	private static final int DISTANCE_NEAR_POINT = 20;	//20 meters
-	private static final int TIME_NEAR_POINT = 60*1000;  //one minute
+	private static final int DISTANCE_NEAR_POINT = 120;	//20 meters
+	private static final int TIME_NEAR_POINT = /*60**/1000;  //one minute
 	private static final int ONE_SECOND = 1000;
-	private static int timeOutToPrompt = 60*1000;
+	private static int timeOutToPrompt = /*60**/1000;
 	private static Timer timer = new Timer();
 	
 	private GoogleMap mMap;
@@ -53,6 +53,7 @@ public class TourMapActivity extends FragmentActivity {
         // Show the Up button in the action bar.
  		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
  			getActionBar().setDisplayHomeAsUpEnabled(true);
+ 			getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.header_background));
  		}
  		
  		timeOutToPrompt = TIME_NEAR_POINT;
@@ -197,6 +198,8 @@ public class TourMapActivity extends FragmentActivity {
 		ArrayList<Point> points = mTour.getPoints();
 		for (int i = 0; i < mTour.getLength(); i++) {
 			Point p = (Point)points.get(i);
+			//invalidate marker options
+			p.setMarkerOptions();
 			drawOnMap(p);
          }
 	}

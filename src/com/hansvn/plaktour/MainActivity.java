@@ -5,8 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -17,12 +19,16 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 	public final static String SELECTED_TOUR = "com.hansvn.plaktour.TOUR";
 	public static TourListAdapter tourListAdapter;
-	private static int selectedTour;
+	private static int selectedTour = -1;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+			getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.header_background));
+		}
 		
 		//test om te kijken of internet werkt
 		String internet;
@@ -94,6 +100,16 @@ public class MainActivity extends Activity {
 
 	}
 	
+	//actie van header knop
+	public void showProfileActions(View v) {
+		Toast.makeText(getApplicationContext(), "you clicked the profile button", Toast.LENGTH_LONG).show();
+		
+		/*PopupMenu popup = new PopupMenu(this, v);
+	    MenuInflater inflater = popup.getMenuInflater();
+	    inflater.inflate(R.menu.profile_actions, popup.getMenu());
+	    popup.show();*/
+	}
+	
 	//actie van start tour button onclick staat in xml
 	public void startTour(View view) {
 		//get te tour to pass:
@@ -102,13 +118,19 @@ public class MainActivity extends Activity {
 		//Toast.makeText(getApplicationContext(), "the selected tour: "+ tourToOpen.getTitle(), Toast.LENGTH_LONG).show();
 
 		Intent intent = new Intent(view.getContext(), TourMapActivity.class);
-		intent.putExtra(SELECTED_TOUR, Integer.toString(selectedTour));
-		startActivity(intent);
+		if(selectedTour == -1){
+			Toast.makeText(getApplicationContext(), "Please select a tour first...", Toast.LENGTH_LONG).show();
+		}
+		else {
+			intent.putExtra(SELECTED_TOUR, Integer.toString(selectedTour));
+			startActivity(intent);
+		}
 	}
 	
 	//actie van comments button
-	public void viewTourComments(View view) {
+	public void viewTourComments(View v) {
 		Toast.makeText(getApplicationContext(), "you clicked the comments button", Toast.LENGTH_LONG).show();
+
 	}
 	
 	//actie van newTour button
@@ -121,6 +143,28 @@ public class MainActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    boolean ret;
+	    if (item.getItemId() == R.id.action_settings)
+	    {
+	        // Handle Settings
+	        ret = true;
+	        Toast.makeText(getApplicationContext(), "Settings were clicked", Toast.LENGTH_LONG).show();
+	    }
+	    else if (item.getItemId() == R.id.profile_icon)
+	    {
+	    	Toast.makeText(getApplicationContext(), "Profile was clicked", Toast.LENGTH_LONG).show();
+	    	
+	    	ret = true;
+	    }
+	    else
+	    {
+	        ret = super.onOptionsItemSelected( item );
+	    }
+	    return ret;
 	}
 
 }

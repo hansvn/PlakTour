@@ -42,19 +42,6 @@ public class TourListAdapter extends BaseAdapter {
 		else {
 			//get from local storage
 		}
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		tours.add(new Tour(
@@ -299,7 +286,7 @@ public class TourListAdapter extends BaseAdapter {
 
 		//try parse the string to a JSON object
 		try{
-	        	jArray = new JSONObject(result);
+	        jArray = new JSONObject(result);
 		}catch(JSONException e){
 			Log.e("log_tag", "Error parsing data "+e.toString());
 		}

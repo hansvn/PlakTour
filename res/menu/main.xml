@@ -1,9 +1,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-
+	<!-- dit is het menu dat komt wanneer op de hardware menu knop wordt geduwd -->
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:showAsAction="never"
         android:title="@string/action_settings"/>
+    
+    <!-- dit komt in de header (door showasaction) -->
+    <item
+        android:id="@+id/profile_icon"
+        android:showAsAction="always"
+        android:icon="@drawable/profile_icon"
+        android:title="@string/header_profile" />
 
 </menu>

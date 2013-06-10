@@ -22,4 +22,7 @@
 	<color name="tourDetailValue">#5d5d60</color>
 	
 	<color name="tourListItem_normal">#fefefe</color>
+	
+	<color name="headerBackgroundStart">#ffde00</color>
+	<color name="headerBackgroundEnd">#ffbb00</color>
 </resources>

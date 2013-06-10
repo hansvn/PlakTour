@@ -21,6 +21,7 @@ public class TourDetailActivity extends Activity {
 		// Show the Up button in the action bar.
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 			getActionBar().setDisplayHomeAsUpEnabled(true);
+			getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.header_background));
 		}
 		
 		// Get the selected tour from the intent

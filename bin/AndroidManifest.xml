@@ -40,8 +40,7 @@
         
         <activity
 	        android:name="com.hansvn.plaktour.TourDetailActivity"
-	        android:label="@string/title_activity_tour_detail"
-	        android:parentActivityName="com.hansvn.plaktour.MainActivity" >
+	        android:label="@string/title_activity_tour_detail" >
 	        <meta-data
 	            android:name="android.support.PARENT_ACTIVITY"
 	            android:value="com.hansvn.plaktour.MainActivity" />
@@ -49,8 +48,7 @@
     	
         <activity
 	        android:name="com.hansvn.plaktour.TourMapActivity"
-	        android:label="@string/title_activity_map"
-	        android:parentActivityName="com.hansvn.plaktour.MainActivity" >
+	        android:label="@string/title_activity_map" >
 	        <meta-data
 	            android:name="android.support.PARENT_ACTIVITY"
 	            android:value="com.hansvn.plaktour.MainActivity" />

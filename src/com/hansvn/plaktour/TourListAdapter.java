@@ -1,7 +1,13 @@
 package com.hansvn.plaktour;
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -13,6 +19,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,22 +35,27 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class TourListAdapter extends BaseAdapter {
 	
 	private ArrayList<Tour> tours = new ArrayList<Tour>();
+	private Context ctx = null;	//the parents context for the internal storage
+	private static String STORAGE_FILENAME = "PlakTour_Data";
 	
 	//testData, delete this constructor later to remove testdata
-	public TourListAdapter(String mode) {		
+	public TourListAdapter(String mode, Context ctx) {		
 		/**
 		 * get the data from internet or local storage
 		 * mode is ofwel via internet ofwel via local storage
 		 **/
+		this.ctx = ctx;
+		
 		if(mode == "internet"){
 			//do the internet call
-			new RetreiveToursTask().execute("http://192.168.0.191/PlakTour_app/json/getTours.php");
+			new RetreiveToursTask().execute("http://www.hansvn.be/PlakTour_app/json/getTours.php");	//of 192.168.123.89
 		}
 		else {
 			//get from local storage
+			tours = readFromInternalStorage();
 		}
 		
-		
+		///*
 		tours.add(new Tour(
 		"Een", "Feeling good!"));
 		tours.add(new Tour(
@@ -78,6 +90,7 @@ public class TourListAdapter extends BaseAdapter {
 			points.add(p);
 		}
 		tours.get(3).setPoints(points);
+		//*/
 	}
 	
 	
@@ -115,22 +128,38 @@ public class TourListAdapter extends BaseAdapter {
 		return convertView;
 	}
 	
+	public void saveToInternalStorage() {
+		try {
+			FileOutputStream fos = ctx.openFileOutput(STORAGE_FILENAME, Context.MODE_PRIVATE);
+			ObjectOutputStream of = new ObjectOutputStream(fos);
+			of.writeObject(tours);
+			of.flush();
+			of.close();
+			fos.close();
+		}
+		catch (Exception e) {
+			Log.e("PlakTour_InternalStorage", e.getLocalizedMessage());
+		}
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
+	@SuppressWarnings("unchecked")	//voor de cast naar arraylist<Tour>
+	public ArrayList<Tour> readFromInternalStorage() {
+	    ArrayList<Tour> toReturn = new ArrayList<Tour>();
+	    FileInputStream fis;
+	    try {
+	        fis = ctx.openFileInput(STORAGE_FILENAME);
+	        ObjectInputStream oi = new ObjectInputStream(fis);
+	        toReturn = (ArrayList<Tour>) oi.readObject();
+	        oi.close();
+	    } catch (FileNotFoundException e) {
+	        Log.e("PlaktTour_InternalStorage", e.getMessage());
+	    } catch (IOException e) {
+	        Log.e("PlaktTour_InternalStorage", e.getMessage()); 
+	    } catch (ClassNotFoundException e) {
+	    	Log.e("PlaktTour_InternalStorage", e.getMessage());
+	    }
+	    return toReturn;
+	} 
 	
 	
 	class RetreiveToursTask extends AsyncTask<String, Void, ArrayList<Tour>> {
@@ -161,6 +190,7 @@ public class TourListAdapter extends BaseAdapter {
 			}
 			
 			TourListAdapter.this.notifyDataSetChanged();
+			TourListAdapter.this.saveToInternalStorage();
 		}
 	}
 	
@@ -174,6 +204,7 @@ public class TourListAdapter extends BaseAdapter {
 			int statusCode = Integer.parseInt(json.getString("statusCode"));
 			if(statusCode != 1){
 				//the query didn't execute...
+				Log.e("PlakTour_HTTPRequest","query didn't execute");
 			}
 			else
 			{
@@ -184,7 +215,7 @@ public class TourListAdapter extends BaseAdapter {
 					throw new JSONException("json answer too short...");
 				}
 				//iterate over the points
-				for(int i=0; i<jsonLength-2; i++) {
+				for(int i=0; i<jsonLength-1; i++) {
 					JSONObject punt = json.getJSONObject(Integer.toString(i));
 					int currentTourId = Integer.parseInt(punt.getString("tour_id"));
 					

@@ -18,7 +18,7 @@ import org.json.JSONObject;
 import android.util.Log;
 
 public class NetworkActivities {
-	private final String url = "http://192.168.0.191/PlakTour_app/json/postProgress.php";
+	private final String url = "http://www.hansvn.be/PlakTour_app/json/postProgress.php";
 	private String type = null;
 	private Object value = null;
 

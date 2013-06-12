@@ -1,22 +1,25 @@
 package com.hansvn.plaktour;
 
+import java.io.Serializable;
+
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class Point {
+public class Point implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	//public MarkerOptions so it can be accessed directly
 	//and not an overload of getters and setters are needed
-	public MarkerOptions markerOptions;
+	public transient MarkerOptions markerOptions;
 	private int posters; //the number of posters for this point
 	private boolean isDone; //if this point is being done
 	private boolean isUpdated; //if the point is updated with internet
 	private int internetID;
 
 	public Point() {
-		// TODO Auto-generated constructor stub
 		
 	}
 	

@@ -6,6 +6,7 @@
     
     <string name="title_activity_tour_detail">Tour Detail</string>
     <string name="title_activity_map">Map</string>
+    <string name="title_activity_settings">Instellingen</string>
     
     <string name="detail_points">Aantal Punten</string>
     <string name="detail_posters">Aantal Affiches</string>
@@ -14,6 +15,17 @@
     <string name="detail_pointsDone">Aantal punten gedaan</string>
     
     <string name="header_profile">profiel</string>
+    
+    <string name="profileMenu_profile">Profiel</string>
+    <string name="profileMenu_logOut">Uitloggen</string>
+    
+    <string name="mapMenu_newPoint">Nieuw Punt Toevoegen</string>
+    
+    <string name="settings_distanceToPoint">Minimum aftand tot punt</string>
+    <string name="settings_timeNearPoint">Minimum tijd bij punt</string>
+    <string name="settings_distanceToPointUnit">m</string>
+    <string name="settings_timeNearPointUnit">sec.</string>
+    <string name="settings_restoreDefaultBtn">StandaardWaarden</string>
     
     <!-- dialog to ask the user if the point is done -->
     <string name="confirm_point_done">Punt Gedaan</string>

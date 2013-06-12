@@ -217,55 +217,71 @@ containing a value of this type.
         public static final int tour_list_selector_pressed=0x7f020025;
     }
     public static final class id {
-        public static final int action_settings=0x7f050020;
+        public static final int action_settings=0x7f050029;
         public static final int bottomActionBar=0x7f050006;
         public static final int comments_button=0x7f050007;
-        public static final int description_view=0x7f05001f;
-        public static final int detail_lastActivityLabel=0x7f050017;
-        public static final int detail_lastActivityLayout=0x7f050016;
-        public static final int detail_lastActivityValue=0x7f050018;
-        public static final int detail_pointsDoneLabel=0x7f05001a;
-        public static final int detail_pointsDoneLayout=0x7f050019;
-        public static final int detail_pointsDoneValue=0x7f05001b;
-        public static final int detail_pointsLabel=0x7f05000e;
-        public static final int detail_pointsLayout=0x7f05000d;
-        public static final int detail_pointsValue=0x7f05000f;
-        public static final int detail_postersLabel=0x7f050011;
-        public static final int detail_postersLayout=0x7f050010;
-        public static final int detail_postersValue=0x7f050012;
-        public static final int detail_timeLabel=0x7f050014;
-        public static final int detail_timeLayout=0x7f050013;
-        public static final int detail_timeValue=0x7f050015;
+        public static final int description_view=0x7f050028;
+        public static final int detail_lastActivityLabel=0x7f050020;
+        public static final int detail_lastActivityLayout=0x7f05001f;
+        public static final int detail_lastActivityValue=0x7f050021;
+        public static final int detail_pointsDoneLabel=0x7f050023;
+        public static final int detail_pointsDoneLayout=0x7f050022;
+        public static final int detail_pointsDoneValue=0x7f050024;
+        public static final int detail_pointsLabel=0x7f050017;
+        public static final int detail_pointsLayout=0x7f050016;
+        public static final int detail_pointsValue=0x7f050018;
+        public static final int detail_postersLabel=0x7f05001a;
+        public static final int detail_postersLayout=0x7f050019;
+        public static final int detail_postersValue=0x7f05001b;
+        public static final int detail_timeLabel=0x7f05001d;
+        public static final int detail_timeLayout=0x7f05001c;
+        public static final int detail_timeValue=0x7f05001e;
         public static final int detail_title=0x7f05000c;
         public static final int hybrid=0x7f050004;
-        public static final int listItem_layout=0x7f05001d;
+        public static final int listItem_layout=0x7f050026;
         public static final int listViewTours=0x7f050005;
+        public static final int mapMenu_newPoint=0x7f05002b;
+        public static final int mapMenu_settings=0x7f05002c;
         public static final int new_tour_button=0x7f050009;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
-        public static final int profile_icon=0x7f050021;
+        public static final int profileMenu_logOut=0x7f05002e;
+        public static final int profileMenu_profile=0x7f05002d;
+        public static final int profile_icon=0x7f05002a;
         public static final int satellite=0x7f050002;
+        public static final int settings_distanceToPointLabel=0x7f05000e;
+        public static final int settings_distanceToPointUnit=0x7f050010;
+        public static final int settings_distanceToPointValue=0x7f05000f;
+        public static final int settings_distanceToPointlayout=0x7f05000d;
+        public static final int settings_restoreDefaultBtn=0x7f050015;
+        public static final int settings_timeNearPointLabel=0x7f050012;
+        public static final int settings_timeNearPointUnit=0x7f050014;
+        public static final int settings_timeNearPointValue=0x7f050013;
+        public static final int settings_timeNearPointlayout=0x7f050011;
         public static final int start_button=0x7f050008;
         public static final int terrain=0x7f050003;
-        public static final int title_view=0x7f05001e;
+        public static final int title_view=0x7f050027;
         public static final int tourDetailBackground=0x7f05000a;
         public static final int tourDetailLayout=0x7f05000b;
-        public static final int tourMap=0x7f05001c;
+        public static final int tourMap=0x7f050025;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
-        public static final int activity_tour_detail=0x7f030001;
-        public static final int activity_tour_map=0x7f030002;
-        public static final int tour_list_item=0x7f030003;
+        public static final int activity_settings=0x7f030001;
+        public static final int activity_tour_detail=0x7f030002;
+        public static final int activity_tour_map=0x7f030003;
+        public static final int tour_list_item=0x7f030004;
     }
     public static final class menu {
         public static final int main=0x7f090000;
+        public static final int map_menu=0x7f090001;
+        public static final int profile_menu=0x7f090002;
     }
     public static final class string {
         public static final int action_settings=0x7f060016;
         /**  Internet strings 
          */
-        public static final int api_url=0x7f060025;
+        public static final int api_url=0x7f06002e;
         public static final int app_name=0x7f060015;
         /**   Title for notification shown when GooglePlayServices is unavailable [CHAR LIMIT=70] 
          */
@@ -276,7 +292,7 @@ containing a value of this type.
         /**   Requested by string saying which app requested the notification. [CHAR LIMIT=42] 
          */
         public static final int auth_client_requested_by_msg=0x7f060011;
-        public static final int comments_button=0x7f060027;
+        public static final int comments_button=0x7f060030;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -334,19 +350,19 @@ containing a value of this type.
         public static final int common_signin_button_text_long=0x7f06000e;
         /**  dialog to ask the user if the point is done 
          */
-        public static final int confirm_point_done=0x7f06001f;
-        public static final int confirm_point_done_action=0x7f060021;
-        public static final int confirm_point_done_dialog=0x7f060020;
-        public static final int detail_lastActivity=0x7f06001c;
-        public static final int detail_points=0x7f060019;
-        public static final int detail_pointsDone=0x7f06001d;
-        public static final int detail_posters=0x7f06001a;
-        public static final int detail_time=0x7f06001b;
+        public static final int confirm_point_done=0x7f060028;
+        public static final int confirm_point_done_action=0x7f06002a;
+        public static final int confirm_point_done_dialog=0x7f060029;
+        public static final int detail_lastActivity=0x7f06001d;
+        public static final int detail_points=0x7f06001a;
+        public static final int detail_pointsDone=0x7f06001e;
+        public static final int detail_posters=0x7f06001b;
+        public static final int detail_time=0x7f06001c;
         /**  dialog to prompt the user to enable the gps 
          */
-        public static final int enable_gps=0x7f060022;
-        public static final int enable_gps_dialog=0x7f060023;
-        public static final int header_profile=0x7f06001e;
+        public static final int enable_gps=0x7f06002b;
+        public static final int enable_gps_dialog=0x7f06002c;
+        public static final int header_profile=0x7f06001f;
         /**  Location client code resources (prefix with location_client) 
 
         Begin strings for location.reporting
@@ -358,12 +374,21 @@ containing a value of this type.
         public static final int location_client_ulr_inactive_age_under_13=0x7f060012;
         public static final int location_client_ulr_inactive_age_unknown=0x7f060013;
         public static final int location_client_ulr_inactive_unknown_restriction=0x7f060014;
-        public static final int newTour_button=0x7f060028;
-        public static final int not_support_gps=0x7f060024;
+        public static final int mapMenu_newPoint=0x7f060022;
+        public static final int newTour_button=0x7f060031;
+        public static final int not_support_gps=0x7f06002d;
+        public static final int profileMenu_logOut=0x7f060021;
+        public static final int profileMenu_profile=0x7f060020;
+        public static final int settings_distanceToPoint=0x7f060023;
+        public static final int settings_distanceToPointUnit=0x7f060025;
+        public static final int settings_restoreDefaultBtn=0x7f060027;
+        public static final int settings_timeNearPoint=0x7f060024;
+        public static final int settings_timeNearPointUnit=0x7f060026;
         /**  Accessible strings 
          */
-        public static final int start_button=0x7f060026;
+        public static final int start_button=0x7f06002f;
         public static final int title_activity_map=0x7f060018;
+        public static final int title_activity_settings=0x7f060019;
         public static final int title_activity_tour_detail=0x7f060017;
     }
     public static final class style {

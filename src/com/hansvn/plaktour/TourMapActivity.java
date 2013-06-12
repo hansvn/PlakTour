@@ -10,6 +10,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -18,7 +19,10 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.NavUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -31,10 +35,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 @SuppressLint("ValidFragment")
 public class TourMapActivity extends FragmentActivity {
 	private final String TAG = getClass().getSimpleName();
-	private static final int DISTANCE_NEAR_POINT = 120;	//20 meters
-	private static final int TIME_NEAR_POINT = /*60**/1000;  //one minute
+	public static final String PLAKTOUR_PREFS = "PlakTourPrefs";
+	private static int DISTANCE_NEAR_POINT = 120;	//20 meters
+	private static int TIME_NEAR_POINT = 60*1000;  //one minute
 	private static final int ONE_SECOND = 1000;
-	private static int timeOutToPrompt = /*60**/1000;
+	private static int timeOutToPrompt = 60*1000;
 	private static Timer timer = new Timer();
 	
 	private GoogleMap mMap;
@@ -55,6 +60,9 @@ public class TourMapActivity extends FragmentActivity {
  			getActionBar().setDisplayHomeAsUpEnabled(true);
  			getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.header_background));
  		}
+ 		
+ 		//load the saved preferences
+ 		loadPreferences();
  		
  		timeOutToPrompt = TIME_NEAR_POINT;
  		
@@ -115,6 +123,14 @@ public class TourMapActivity extends FragmentActivity {
         
 	    //Set up the location manager through GPS
 	    setUpLocationManager();
+    }
+    
+    //load the preferences for the actions at the points
+    private void loadPreferences() {
+    	SharedPreferences settings = getSharedPreferences(PLAKTOUR_PREFS, MODE_PRIVATE); 
+    	DISTANCE_NEAR_POINT = settings.getInt("DistanceNearPoint", 20);
+    	TIME_NEAR_POINT = settings.getInt("TimeNearPoint", 60*1000);
+    	timeOutToPrompt = TIME_NEAR_POINT;
     }
     
     // Method to launch (GPS) Settings
@@ -309,5 +325,29 @@ public class TourMapActivity extends FragmentActivity {
         	mMap.addMarker(moToMark);
         }
     }
+    
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.map_menu, menu);
+		return true;
+	}
+    
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case android.R.id.home:
+				// This ID represents the Home or Up button. In the case of this
+				// activity, the Up button is shown. Use NavUtils to allow users
+				// to navigate up one level in the application structure. For
+				// more details, see the Navigation pattern on Android Design:
+				//
+				// http://developer.android.com/design/patterns/navigation.html#up-vs-back
+				//
+				NavUtils.navigateUpFromSameTask(this);
+				return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
 
 }

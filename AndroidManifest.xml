@@ -54,6 +54,14 @@
 	            android:value="com.hansvn.plaktour.MainActivity" />
     	</activity>
         
+        <activity
+	        android:name="com.hansvn.plaktour.SettingsActivity"
+	        android:label="@string/title_activity_settings" >
+	        <meta-data
+	            android:name="android.support.PARENT_ACTIVITY"
+	            android:value="com.hansvn.plaktour.MainActivity" />
+    	</activity>
+        
         <meta-data
     		android:name="com.google.android.maps.v2.API_KEY"
     		android:value="AIzaSyCN6VpV-QS_j688piXzf8EYZGeC6I2sD70"/>

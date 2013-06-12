@@ -7,9 +7,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 //import android.content.Intent;
+import android.widget.Toast;
 
 public class TourDetailActivity extends Activity {
 	
@@ -46,18 +50,37 @@ public class TourDetailActivity extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case android.R.id.home:
-			// This ID represents the Home or Up button. In the case of this
-			// activity, the Up button is shown. Use NavUtils to allow users
-			// to navigate up one level in the application structure. For
-			// more details, see the Navigation pattern on Android Design:
-			//
-			// http://developer.android.com/design/patterns/navigation.html#up-vs-back
-			//
-			NavUtils.navigateUpFromSameTask(this);
-			return true;
+			case android.R.id.home:
+				// This ID represents the Home or Up button. In the case of this
+				// activity, the Up button is shown. Use NavUtils to allow users
+				// to navigate up one level in the application structure. For
+				// more details, see the Navigation pattern on Android Design:
+				//
+				// http://developer.android.com/design/patterns/navigation.html#up-vs-back
+				//
+				NavUtils.navigateUpFromSameTask(this);
+				return true;
+			case R.id.action_settings:
+		        Intent Settings = new Intent(this, SettingsActivity.class);
+		        this.startActivity(Settings);
+		        return true;
+		    case R.id.profile_icon:
+		    	showProfileMenu(findViewById(R.id.profile_icon));
+		    	return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void showProfileMenu(View v) {
+		PopupMenu popup = new PopupMenu(this, v);
+	    MenuInflater inflater = popup.getMenuInflater();
+	    inflater.inflate(R.menu.profile_menu, popup.getMenu());
+	    popup.show();
+	}
+	
+	//actie van start tour button onclick staat in xml
+	public void startTour(View view) {
+		Toast.makeText(getApplicationContext(), "function not included yet (return to previous screen)", Toast.LENGTH_LONG).show();
 	}
 	
 	public void displayData(Tour tour){

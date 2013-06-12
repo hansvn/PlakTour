@@ -8,18 +8,21 @@ import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	public final static String SELECTED_TOUR = "com.hansvn.plaktour.TOUR";
 	public static TourListAdapter tourListAdapter;
 	private static int selectedTour = -1;
+	public static String internet = ""; //om te kijken of internet aan staat of niet
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +34,16 @@ public class MainActivity extends Activity {
 		}
 		
 		//test om te kijken of internet werkt
-		String internet;
 		ConnectivityManager connMgr = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 		if (networkInfo != null && networkInfo.isConnected()) {
 	        // fetch data
 			internet = "internet";
 			Toast.makeText(getApplicationContext(), "internet ok", Toast.LENGTH_LONG).show();
+			
+			//check for unupdated internet points first
+			//todo: load local data and update undone points
+			//then: clear all and renew list with online one.
 	    } else {
 	        // fetch data from local store
 	    	internet = "local";
@@ -47,7 +53,7 @@ public class MainActivity extends Activity {
 		
 		//set data on listview
 		final ListView toursListView = (ListView) findViewById(R.id.listViewTours);
-		tourListAdapter = new TourListAdapter(internet);
+		tourListAdapter = new TourListAdapter(internet, getApplicationContext());
 		toursListView.setAdapter(tourListAdapter);
 		tourListAdapter.notifyDataSetChanged();
 				
@@ -116,14 +122,21 @@ public class MainActivity extends Activity {
 		//Tour tourToOpen = (Tour) tourListAdapter.getItem(selectedTour);
 		//test message:
 		//Toast.makeText(getApplicationContext(), "the selected tour: "+ tourToOpen.getTitle(), Toast.LENGTH_LONG).show();
-
-		Intent intent = new Intent(view.getContext(), TourMapActivity.class);
-		if(selectedTour == -1){
-			Toast.makeText(getApplicationContext(), "Please select a tour first...", Toast.LENGTH_LONG).show();
+		
+		if(!(internet == "internet")){
+			Toast.makeText(getApplicationContext(), "You Can't start tours without internet (yet)", Toast.LENGTH_LONG).show();
+			//de markeroptions worden nog niet uit de storage gelezen...
 		}
-		else {
-			intent.putExtra(SELECTED_TOUR, Integer.toString(selectedTour));
-			startActivity(intent);
+		else
+		{
+			Intent intent = new Intent(view.getContext(), TourMapActivity.class);
+			if(selectedTour == -1){
+				Toast.makeText(getApplicationContext(), "Please select a tour first...", Toast.LENGTH_LONG).show();
+			}
+			else {
+				intent.putExtra(SELECTED_TOUR, Integer.toString(selectedTour));
+				startActivity(intent);
+			}
 		}
 	}
 	
@@ -146,25 +159,25 @@ public class MainActivity extends Activity {
 	}
 	
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-	    boolean ret;
-	    if (item.getItemId() == R.id.action_settings)
-	    {
-	        // Handle Settings
-	        ret = true;
-	        Toast.makeText(getApplicationContext(), "Settings were clicked", Toast.LENGTH_LONG).show();
+	public boolean onOptionsItemSelected(MenuItem item) {	    
+	    switch (item.getItemId()) {
+	    case R.id.action_settings:
+	        Intent Settings = new Intent(this, SettingsActivity.class);
+	        this.startActivity(Settings);
+	        return true;
+	    case R.id.profile_icon:
+	    	showProfileMenu(findViewById(R.id.profile_icon));
+	    	return true;
+	    default:
+	        return super.onOptionsItemSelected(item);
 	    }
-	    else if (item.getItemId() == R.id.profile_icon)
-	    {
-	    	Toast.makeText(getApplicationContext(), "Profile was clicked", Toast.LENGTH_LONG).show();
-	    	
-	    	ret = true;
-	    }
-	    else
-	    {
-	        ret = super.onOptionsItemSelected( item );
-	    }
-	    return ret;
+	}
+	
+	public void showProfileMenu(View v) {
+		PopupMenu popup = new PopupMenu(this, v);
+	    MenuInflater inflater = popup.getMenuInflater();
+	    inflater.inflate(R.menu.profile_menu, popup.getMenu());
+	    popup.show();
 	}
 
 }

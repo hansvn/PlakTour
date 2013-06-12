@@ -1,0 +1,151 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".SettingsActivity" 
+    android:background="@drawable/gradient_background" >
+
+    <!-- gradient background -->
+    <LinearLayout
+        android:id="@+id/tourDetailBackground"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" 
+        android:background="@drawable/gradient_tours"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="48dp">
+
+        <!-- white background -->
+        <LinearLayout
+            android:id="@+id/tourDetailLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" 
+            android:background="#ffffff"
+            android:layout_marginLeft="8dp"
+        	android:layout_marginTop="8dp"
+        	android:layout_marginRight="8dp"
+        	android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/detail_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:textStyle="bold"
+                android:textColor="@color/tourDetailTitle"
+                android:minHeight="12dip"
+	            android:textSize="24sp"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+            
+            <!-- afstand tot punt layout -->
+            <LinearLayout
+                android:id="@+id/settings_distanceToPointlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" 
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp">
+                
+                <TextView
+                    android:id="@+id/settings_distanceToPointLabel"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:gravity="right"
+                    android:minHeight="12dip"
+                    android:text="@string/settings_distanceToPoint"
+                    android:textColor="@color/tourDetailLabel"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                
+                <EditText 
+                    android:id="@+id/settings_distanceToPointValue"
+                    android:layout_weight="1"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:minHeight="12dip"
+	                android:textSize="18sp"
+	                android:textColor="@color/tourDetailValue"
+	                android:gravity="center_vertical|center_horizontal"
+                    android:inputType="number"/>
+                
+                <TextView
+                    android:id="@+id/settings_distanceToPointUnit"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:minHeight="12dip"
+                    android:text="@string/settings_distanceToPointUnit"
+                    android:textColor="@color/tourDetailLabel"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                
+            </LinearLayout>
+            
+            <!-- tijd bij punt layout -->
+            <LinearLayout
+                android:id="@+id/settings_timeNearPointlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" 
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp">
+                
+                <TextView
+                    android:id="@+id/settings_timeNearPointLabel"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:gravity="right"
+                    android:minHeight="12dip"
+                    android:text="@string/settings_timeNearPoint"
+                    android:textColor="@color/tourDetailLabel"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                
+                <EditText 
+                    android:id="@+id/settings_timeNearPointValue"
+                    android:layout_weight="1"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:minHeight="12dip"
+	                android:textSize="18sp"
+	                android:textColor="@color/tourDetailValue"
+	                android:gravity="center_vertical|center_horizontal"
+                    android:inputType="number"/>
+                
+                <TextView
+                    android:id="@+id/settings_timeNearPointUnit"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:minHeight="12dip"
+                    android:text="@string/settings_timeNearPointUnit"
+                    android:textColor="@color/tourDetailLabel"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                
+            </LinearLayout>
+			
+            <Button
+                android:id="@+id/settings_restoreDefaultBtn"
+                android:gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_restoreDefaultBtn" 
+                android:onClick="restoreDefault"/>
+            
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

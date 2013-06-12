@@ -1,8 +1,11 @@
 package com.hansvn.plaktour;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Tour {
+public class Tour implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private String title;
 	private String description;
 	private ArrayList<Point> points;

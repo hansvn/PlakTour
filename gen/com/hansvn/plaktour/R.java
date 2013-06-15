@@ -281,7 +281,7 @@ containing a value of this type.
         public static final int action_settings=0x7f060016;
         /**  Internet strings 
          */
-        public static final int api_url=0x7f06002e;
+        public static final int api_url=0x7f060030;
         public static final int app_name=0x7f060015;
         /**   Title for notification shown when GooglePlayServices is unavailable [CHAR LIMIT=70] 
          */
@@ -292,7 +292,7 @@ containing a value of this type.
         /**   Requested by string saying which app requested the notification. [CHAR LIMIT=42] 
          */
         public static final int auth_client_requested_by_msg=0x7f060011;
-        public static final int comments_button=0x7f060030;
+        public static final int comments_button=0x7f060032;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -350,9 +350,9 @@ containing a value of this type.
         public static final int common_signin_button_text_long=0x7f06000e;
         /**  dialog to ask the user if the point is done 
          */
-        public static final int confirm_point_done=0x7f060028;
-        public static final int confirm_point_done_action=0x7f06002a;
-        public static final int confirm_point_done_dialog=0x7f060029;
+        public static final int confirm_point_done=0x7f06002a;
+        public static final int confirm_point_done_action=0x7f06002c;
+        public static final int confirm_point_done_dialog=0x7f06002b;
         public static final int detail_lastActivity=0x7f06001d;
         public static final int detail_points=0x7f06001a;
         public static final int detail_pointsDone=0x7f06001e;
@@ -360,8 +360,8 @@ containing a value of this type.
         public static final int detail_time=0x7f06001c;
         /**  dialog to prompt the user to enable the gps 
          */
-        public static final int enable_gps=0x7f06002b;
-        public static final int enable_gps_dialog=0x7f06002c;
+        public static final int enable_gps=0x7f06002d;
+        public static final int enable_gps_dialog=0x7f06002e;
         public static final int header_profile=0x7f06001f;
         /**  Location client code resources (prefix with location_client) 
 
@@ -375,18 +375,20 @@ containing a value of this type.
         public static final int location_client_ulr_inactive_age_unknown=0x7f060013;
         public static final int location_client_ulr_inactive_unknown_restriction=0x7f060014;
         public static final int mapMenu_newPoint=0x7f060022;
-        public static final int newTour_button=0x7f060031;
-        public static final int not_support_gps=0x7f06002d;
+        public static final int newPoint_Message=0x7f060024;
+        public static final int newPoint_Title=0x7f060023;
+        public static final int newTour_button=0x7f060033;
+        public static final int not_support_gps=0x7f06002f;
         public static final int profileMenu_logOut=0x7f060021;
         public static final int profileMenu_profile=0x7f060020;
-        public static final int settings_distanceToPoint=0x7f060023;
-        public static final int settings_distanceToPointUnit=0x7f060025;
-        public static final int settings_restoreDefaultBtn=0x7f060027;
-        public static final int settings_timeNearPoint=0x7f060024;
-        public static final int settings_timeNearPointUnit=0x7f060026;
+        public static final int settings_distanceToPoint=0x7f060025;
+        public static final int settings_distanceToPointUnit=0x7f060027;
+        public static final int settings_restoreDefaultBtn=0x7f060029;
+        public static final int settings_timeNearPoint=0x7f060026;
+        public static final int settings_timeNearPointUnit=0x7f060028;
         /**  Accessible strings 
          */
-        public static final int start_button=0x7f06002f;
+        public static final int start_button=0x7f060031;
         public static final int title_activity_map=0x7f060018;
         public static final int title_activity_settings=0x7f060019;
         public static final int title_activity_tour_detail=0x7f060017;

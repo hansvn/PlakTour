@@ -20,6 +20,8 @@
     <string name="profileMenu_logOut">Uitloggen</string>
     
     <string name="mapMenu_newPoint">Nieuw Punt Toevoegen</string>
+    <string name="newPoint_Title">Nieuw Punt</string>
+    <string name="newPoint_Message">Hoeveel Posters?</string>
     
     <string name="settings_distanceToPoint">Minimum aftand tot punt</string>
     <string name="settings_timeNearPoint">Minimum tijd bij punt</string>

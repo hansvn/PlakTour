@@ -67,5 +67,8 @@ public class Tour implements Serializable {
 		this.points.add(point);
 	}
 
-
+	public Point getLastPoint() {
+		return this.points.get(points.size()-1);
+	}
+	
 }

@@ -188,9 +188,6 @@ public class TourListAdapter extends BaseAdapter {
 			else {
 				Log.e("Http_tours","No tours were added from internet");
 			}
-			
-			TourListAdapter.this.notifyDataSetChanged();
-			TourListAdapter.this.saveToInternalStorage();
 		}
 	}
 	
@@ -222,7 +219,8 @@ public class TourListAdapter extends BaseAdapter {
 					//initialiseer de eerste tour
 					if(tourId == 0){
 						tourId = currentTourId;
-								
+						
+						t.setInternetID(currentTourId);
 						t.setTitle(punt.getString("tour_naam"));
 						t.setDescription(punt.getString("tour_beschrijving"));
 						t.setLastActivity(punt.getString("tour_laatsteActiviteit"));
@@ -247,6 +245,7 @@ public class TourListAdapter extends BaseAdapter {
 						toursFromInternet.add(t);
 						
 						t = new Tour();
+						t.setInternetID(currentTourId);
 						t.setTitle(punt.getString("tour_naam"));
 						t.setDescription(punt.getString("tour_beschrijving"));
 						t.setLastActivity(punt.getString("tour_laatsteActiviteit"));

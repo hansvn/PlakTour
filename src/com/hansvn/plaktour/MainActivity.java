@@ -49,6 +49,8 @@ public class MainActivity extends Activity {
 	    	internet = "local";
 	    	Toast.makeText(getApplicationContext(), "internet not ok", Toast.LENGTH_LONG).show();
 	    }
+		//set to global variable:
+		((PlakTourApplication) this.getApplication()).setInternet(internet);
 		//einde internet test
 		
 		//set data on listview

@@ -14,6 +14,7 @@ import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -23,6 +24,7 @@ import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.NumberPicker;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -49,6 +51,7 @@ public class TourMapActivity extends FragmentActivity {
 	private Location currentLocation;
 	private boolean isNearPoint;
 	private Point nextPoint = new Point();
+	private boolean newPointPossible = true;	//marker to check if user can post a new point or nog (if last one is updated to internet, he can)
 
 	@SuppressLint("NewApi")
 	@Override
@@ -280,6 +283,58 @@ public class TourMapActivity extends FragmentActivity {
 		return returnValue; 
 	}
 	
+	private void addNewPointDialog() {
+		AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+		
+		dialogBuilder.setMessage(R.string.newPoint_Message)
+			.setTitle(R.string.newPoint_Title);
+		
+		//add a numberpicker for user input
+		final NumberPicker np = new NumberPicker(this);
+		dialogBuilder.setView(np);
+		
+		//set the buttons
+		dialogBuilder.setPositiveButton("Toevoegen", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int whichButton) {
+				int posters = np.getValue();
+				//create the point
+				addNewPoint(posters);
+			}
+		});
+		dialogBuilder.setCancelable(true);
+		
+		//show the dialog
+		AlertDialog dialog = dialogBuilder.create();
+		dialog.show();
+	}
+	
+	private void addNewPoint(int posters) {
+		newPointPossible = false;	//set marker so user can't create new points until this one is updated
+		Point point = new Point();
+		MarkerOptions mo = new MarkerOptions();
+		mo.position(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()));
+		point.markerOptions = mo;
+		
+		//try to save point (networkactivity)
+		//! MOET async... anders crash
+		new PostNewPoint().execute(mTour, point);
+		
+		point.setInternetID(-1);	//set the id to -1 to mark that it hasn't been updated yet		
+		this.mTour.addPoint(point);
+		
+		//invalidate to show point
+		point.setMarkerOptions();
+		drawOnMap(point);
+		
+	}
+	
+	//when the async task is completed: set the id of the point
+	private void setInternetId(int id) {
+		this.mTour.getLastPoint().setInternetID(id);
+		
+		newPointPossible = true;
+	}
+	
     /**
      * Dialog to prompt users to enable GPS on the device.
      */
@@ -337,17 +392,46 @@ public class TourMapActivity extends FragmentActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case android.R.id.home:
-				// This ID represents the Home or Up button. In the case of this
-				// activity, the Up button is shown. Use NavUtils to allow users
-				// to navigate up one level in the application structure. For
-				// more details, see the Navigation pattern on Android Design:
-				//
-				// http://developer.android.com/design/patterns/navigation.html#up-vs-back
-				//
+				//Up button
 				NavUtils.navigateUpFromSameTask(this);
+				return true;
+			case R.id.mapMenu_newPoint:
+				if(newPointPossible){
+					addNewPointDialog();
+				}
+				else {
+					Toast.makeText(getApplicationContext(), "Please wait until the previous point is updated.", Toast.LENGTH_LONG).show();
+				}
 				return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	
+	
+	class PostNewPoint extends AsyncTask<Object, Void, Integer> {		
+		@Override
+		protected Integer doInBackground(Object... params) {
+		    try {
+		        Tour tour = (Tour)params[0];
+		        Point point = (Point) params[1];
+		        
+		        //get the internet id from the new point
+				NetworkActivities na = new NetworkActivities();
+		        int toReturn = na.postPoint(tour, point);
+		        
+		        return toReturn;
+		    } catch (Exception e) {
+		        Log.e("AsyncTask", e.toString());
+		        return -1;
+		    }
+		}
+		
+		@Override
+		protected void onPostExecute(Integer id) {
+		    //set the internet id
+			setInternetId(id);
+		}
 	}
 
 }

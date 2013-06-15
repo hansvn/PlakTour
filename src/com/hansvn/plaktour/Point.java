@@ -15,6 +15,7 @@ public class Point implements Serializable {
 	//and not an overload of getters and setters are needed
 	public transient MarkerOptions markerOptions;
 	private int posters; //the number of posters for this point
+	private String name; //the name of the point
 	private boolean isDone; //if this point is being done
 	private boolean isUpdated; //if the point is updated with internet
 	private int internetID;
@@ -53,6 +54,15 @@ public class Point implements Serializable {
 		this.internetID = internetID;
 	}
 	
+	public String getName() {
+		if(name == null) return "unnamed";
+		else return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	
 	public void setMarkerOptions() {
 		//this must be done when the map is initialised, otherwise there will be an error on the icon.
@@ -62,7 +72,7 @@ public class Point implements Serializable {
 		mo.icon(BitmapDescriptorFactory.fromResource(R.drawable.pole_icon));
 		this.markerOptions = mo;
 	}
-	
+
 	class PostPointProgress extends AsyncTask<Void, Void, Boolean> {
 		private Exception exception;
 		

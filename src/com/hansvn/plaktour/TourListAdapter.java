@@ -184,6 +184,7 @@ public class TourListAdapter extends BaseAdapter {
 		    //add the tours from internet to the array
 			if(toursArray != null) {
 				tours.addAll(toursArray);
+				TourListAdapter.this.notifyDataSetChanged();
 			}
 			else {
 				Log.e("Http_tours","No tours were added from internet");

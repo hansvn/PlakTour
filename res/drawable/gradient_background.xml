@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
-	<gradient
+	
+	<solid android:color="@color/bottomBarBackground" />
+	
+	<!-- old gradient<gradient
 	android:startColor="#FF236dd9"
 	android:endColor="#FF64b0f6"
 	android:angle="270"/>
+	 -->
 </shape>

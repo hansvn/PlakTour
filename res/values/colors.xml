@@ -17,12 +17,16 @@
 	<color name="navy">#000080</color>
 	<color name="black">#000000</color>
 	
+	<color name="ruler">#cccccc</color>
+	
 	<color name="tourDetailTitle">#131151</color>
 	<color name="tourDetailLabel">#8d8e92</color>
 	<color name="tourDetailValue">#5d5d60</color>
 	
 	<color name="tourListItem_normal">#fefefe</color>
 	
-	<color name="headerBackgroundStart">#ffde00</color>
+	<color name="headerBackgroundStart">#D9E80C</color>
 	<color name="headerBackgroundEnd">#ffbb00</color>
+	
+	<color name="bottomBarBackground">#D9E80C</color>
 </resources>

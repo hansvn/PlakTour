@@ -39,7 +39,7 @@ public class MainActivity extends Activity {
 		if (networkInfo != null && networkInfo.isConnected()) {
 	        // fetch data
 			internet = "internet";
-			Toast.makeText(getApplicationContext(), "internet ok", Toast.LENGTH_LONG).show();
+			//*************************Toast.makeText(getApplicationContext(), "internet ok", Toast.LENGTH_LONG).show();
 			
 			//check for unupdated internet points first
 			//todo: load local data and update undone points
@@ -54,52 +54,59 @@ public class MainActivity extends Activity {
 		//einde internet test
 		
 		//set data on listview
-		final ListView toursListView = (ListView) findViewById(R.id.listViewTours);
-		tourListAdapter = new TourListAdapter(internet, getApplicationContext());
-		toursListView.setAdapter(tourListAdapter);
-		tourListAdapter.notifyDataSetChanged();
-				
-		//final swipedetector to access it from the onItemClick function
-		final SwipeDetector swipeDetector = new SwipeDetector();
-		toursListView.setOnTouchListener(swipeDetector);
+		if( savedInstanceState != null ) {
+			//load the arraylist from savedinstance, must be parcelable first
+		}
+		else {		
+			final ListView toursListView = (ListView) findViewById(R.id.listViewTours);
+			tourListAdapter = new TourListAdapter(internet, getApplicationContext());
+			toursListView.setAdapter(tourListAdapter);
+			tourListAdapter.notifyDataSetChanged();
+					
+			//final swipedetector to access it from the onItemClick function
+			final SwipeDetector swipeDetector = new SwipeDetector();
+			toursListView.setOnTouchListener(swipeDetector);
+			
+			toursListView.setOnItemClickListener(new OnItemClickListener() {
+				@Override
+				public void onItemClick(AdapterView<?> adapter, View view, int position, long arg){
+		            if (swipeDetector.swipeDetected()){
+		                // do the onSwipe action 
+		            	Intent intent = new Intent(view.getContext(), TourDetailActivity.class);
+						intent.putExtra(SELECTED_TOUR, Integer.toString(position));
+						startActivity(intent);
+		            } else {
+		                // do the onItemClick action
+		            	//Toast.makeText(getApplicationContext(), "You clicked at item "+ position, Toast.LENGTH_LONG).show();
+		            	view.setSelected(true);
+		            	selectedTour = position;
+		            	//een animatieke op achtergrond:
+		            	/*
+		            	LinearLayout listItem = (LinearLayout) view.findViewById(R.id.listItem_layout);
+		            	listItem.setBackgroundDrawable(background)
+		            	*/
+		            	//een animatie-list maken om op achtergrond te zetten
+		            	//animatie verwijderen van zodra de onclick stopt...
+		            }
+				}
+			});
+			
+			toursListView.setOnItemLongClickListener(new OnItemLongClickListener() {
+		        @Override
+		        public boolean onItemLongClick(AdapterView<?> adapter, View view, int position, long arg) {
+		            if (swipeDetector.swipeDetected()){
+		                // do the onSwipe action 
+		            	Toast.makeText(getApplicationContext(), "You Longswiped at item "+ position, Toast.LENGTH_LONG).show();
+		            } else {
+		                // do the onItemLongClick action
+		            	Toast.makeText(getApplicationContext(), "You LongClicked at item "+ position, Toast.LENGTH_LONG).show();
+		            }
+		            return true;
+		        }
+		    });
+		}
+		//end else onSavedInstance
 		
-		toursListView.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> adapter, View view, int position, long arg){
-	            if (swipeDetector.swipeDetected()){
-	                // do the onSwipe action 
-	            	Intent intent = new Intent(view.getContext(), TourDetailActivity.class);
-					intent.putExtra(SELECTED_TOUR, Integer.toString(position));
-					startActivity(intent);
-	            } else {
-	                // do the onItemClick action
-	            	//Toast.makeText(getApplicationContext(), "You clicked at item "+ position, Toast.LENGTH_LONG).show();
-	            	view.setSelected(true);
-	            	selectedTour = position;
-	            	//een animatieke op achtergrond:
-	            	/*
-	            	LinearLayout listItem = (LinearLayout) view.findViewById(R.id.listItem_layout);
-	            	listItem.setBackgroundDrawable(background)
-	            	*/
-	            	//een animatie-list maken om op achtergrond te zetten
-	            	//animatie verwijderen van zodra de onclick stopt...
-	            }
-			}
-		});
-		
-		toursListView.setOnItemLongClickListener(new OnItemLongClickListener() {
-	        @Override
-	        public boolean onItemLongClick(AdapterView<?> adapter, View view, int position, long arg) {
-	            if (swipeDetector.swipeDetected()){
-	                // do the onSwipe action 
-	            	Toast.makeText(getApplicationContext(), "You Longswiped at item "+ position, Toast.LENGTH_LONG).show();
-	            } else {
-	                // do the onItemLongClick action
-	            	Toast.makeText(getApplicationContext(), "You LongClicked at item "+ position, Toast.LENGTH_LONG).show();
-	            }
-	            return true;
-	        }
-	    });
 	}
 	
 	@Override
@@ -108,14 +115,10 @@ public class MainActivity extends Activity {
 
 	}
 	
-	//actie van header knop
-	public void showProfileActions(View v) {
-		Toast.makeText(getApplicationContext(), "you clicked the profile button", Toast.LENGTH_LONG).show();
-		
-		/*PopupMenu popup = new PopupMenu(this, v);
-	    MenuInflater inflater = popup.getMenuInflater();
-	    inflater.inflate(R.menu.profile_actions, popup.getMenu());
-	    popup.show();*/
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		//save the arraylist from the tours, must be parcelable first.
 	}
 	
 	//actie van start tour button onclick staat in xml

@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
-	<gradient
-	android:startColor="@color/headerBackgroundStart"
-	android:endColor="@color/headerBackgroundEnd"
-	android:angle="270"/>
+	<gradient 
+	    android:startColor="@color/headerBackgroundStart"
+		android:endColor="@color/headerBackgroundStart"
+		android:angle="270"/>
+		
+	<!-- old layout 
+		<gradient
+			android:startColor="@color/headerBackgroundStart"
+			android:endColor="@color/headerBackgroundEnd"
+			android:angle="270"/>
+	-->
 
 </shape>
